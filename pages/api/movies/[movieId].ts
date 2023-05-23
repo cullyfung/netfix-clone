@@ -24,7 +24,9 @@ export default async function handler(
     }
 
     const movie = await prismadb.movie.findUnique({
-      id: movieId
+      where: {
+        id: movieId
+      }
     })
 
     if (!movie) {

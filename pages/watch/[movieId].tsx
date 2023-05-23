@@ -36,6 +36,12 @@ const Watch = () => {
           {data?.title}
         </p>
       </nav>
+      <video
+        className="h-full w-full"
+        autoPlay
+        controls
+        src={data?.videoUrl}
+      ></video>
     </div>
   )
 }

@@ -68,6 +68,5 @@ model Movie {
   videoUrl     String
   thumbnailUrl String
   genre        String
-  rating       Int
   duration     String
 }

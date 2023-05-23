@@ -3,6 +3,7 @@
 ## Stack
 
 - typescript
+- swr
 - axios
 - react
 - prisma

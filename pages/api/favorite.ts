@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { without } from 'lodash-es'
+import { isEmpty, without } from 'lodash-es'
 
 import prismadb from '@/lib/prismadb'
 import serverAuth from '@/lib/serverAuth'
@@ -24,9 +24,9 @@ export default async function handler(
         throw new Error(`Invalid ID`)
       }
 
-      const user = prismadb.user.update({
+      const user = await prismadb.user.update({
         where: {
-          email: currentUser.email || ''
+          id: currentUser.id
         },
         data: {
           favoriteIds: {

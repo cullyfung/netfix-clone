@@ -1,9 +1,10 @@
 import React from 'react'
 import { isEmpty } from 'lodash-es'
 import MovieCard from './MovieCard'
+import { MovieInterface } from '@/types'
 
 interface MovieListProps {
-  data: Record<string, any>[]
+  data: MovieInterface[]
   title: string
 }
 
