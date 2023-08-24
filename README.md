@@ -16,3 +16,5 @@
 ![](screenshots/login.png)
 
 ## License
+
+**MIT**
