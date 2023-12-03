@@ -1,14 +1,14 @@
-import useMovie from '@/hooks/useMovie'
-import { useRouter } from 'next/router'
-import React from 'react'
+import useMovie from '@/hooks/useMovie';
+import { useRouter } from 'next/router';
+import React from 'react';
 
-import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const Watch = () => {
-  const router = useRouter()
-  const { movieId } = router.query
+  const router = useRouter();
+  const { movieId } = router.query;
 
-  const { data } = useMovie(movieId as string)
+  const { data } = useMovie(movieId as string);
   return (
     <div className="w-screen h-screen bg-black">
       <nav
@@ -43,7 +43,7 @@ const Watch = () => {
         src={data?.videoUrl}
       ></video>
     </div>
-  )
-}
+  );
+};
 
-export default Watch
+export default Watch;

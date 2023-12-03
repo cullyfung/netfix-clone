@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import { BsFillPlayFill } from 'react-icons/bs'
+import { BsFillPlayFill } from 'react-icons/bs';
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 interface PlayButtonProps {
-  movieId: string
+  movieId: string;
 }
 
 const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <button
@@ -29,9 +29,12 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
         transition
       "
     >
-      <BsFillPlayFill size={25} className="mr-1" />
+      <BsFillPlayFill
+        size={25}
+        className="mr-1"
+      />
     </button>
-  )
-}
+  );
+};
 
-export default PlayButton
+export default PlayButton;

@@ -1,34 +1,34 @@
-import useInfoModal from '@/hooks/useInfoModal'
-import useMovie from '@/hooks/useMovie'
-import React, { useCallback, useEffect, useState } from 'react'
-import { AiOutlineClose } from 'react-icons/ai'
-import PlayButton from './PlayButton'
-import FavoriteButton from './FavoriteButton'
+import useInfoModal from '@/hooks/useInfoModal';
+import useMovie from '@/hooks/useMovie';
+import React, { useCallback, useEffect, useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
+import PlayButton from './PlayButton';
+import FavoriteButton from './FavoriteButton';
 
 interface InfoModalProps {
-  visible?: boolean
-  onClose: any
+  visible?: boolean;
+  onClose: any;
 }
 
 const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
-  const [isVisible, setIsVisible] = useState(!!visible)
+  const [isVisible, setIsVisible] = useState(!!visible);
 
-  const { movieId } = useInfoModal()
-  const { data = {} } = useMovie(movieId)
+  const { movieId } = useInfoModal();
+  const { data = {} } = useMovie(movieId);
 
   useEffect(() => {
-    setIsVisible(!!visible)
-  }, [visible])
+    setIsVisible(!!visible);
+  }, [visible]);
 
   const handleClose = useCallback(() => {
-    setIsVisible(false)
+    setIsVisible(false);
     setTimeout(() => {
-      onClose()
-    }, 300)
-  }, [onClose])
+      onClose();
+    }, 300);
+  }, [onClose]);
 
   if (!visible) {
-    return null
+    return null;
   }
 
   return (
@@ -100,7 +100,10 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
               "
               onClick={handleClose}
             >
-              <AiOutlineClose className="text-white" size={20} />
+              <AiOutlineClose
+                className="text-white"
+                size={20}
+              />
             </div>
 
             <div
@@ -130,7 +133,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
       </div>
       InfoModal
     </div>
-  )
-}
+  );
+};
 
-export default InfoModal
+export default InfoModal;

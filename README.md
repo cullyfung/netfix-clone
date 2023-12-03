@@ -13,7 +13,7 @@
 
 ## Screenshots
 
-![](screenshots/login.png)
+![login](screenshots/login.png)
 
 ## License
 

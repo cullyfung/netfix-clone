@@ -1,18 +1,18 @@
-import useBillboard from '@/hooks/useBillboard'
-import React, { useCallback } from 'react'
+import useBillboard from '@/hooks/useBillboard';
+import React, { useCallback } from 'react';
 
-import { AiOutlineInfoCircle } from 'react-icons/ai'
-import PlayButton from './PlayButton'
-import useInfoModal from '@/hooks/useInfoModal'
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+import PlayButton from './PlayButton';
+import useInfoModal from '@/hooks/useInfoModal';
 
 const Billboard = () => {
-  const { data, error, isLoading } = useBillboard()
+  const { data, error, isLoading } = useBillboard();
 
-  const { openModal } = useInfoModal()
+  const { openModal } = useInfoModal();
 
   const handleOpenModal = useCallback(() => {
-    openModal(data?.id)
-  }, [openModal, data?.id])
+    openModal(data?.id);
+  }, [openModal, data?.id]);
 
   return (
     <div className="relative h-[56.25vw]">
@@ -86,7 +86,7 @@ const Billboard = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Billboard
+export default Billboard;

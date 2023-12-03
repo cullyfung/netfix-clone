@@ -1,19 +1,19 @@
-import React from 'react'
-import { BsFillPlayFill } from 'react-icons/bs'
-import { BiChevronDown } from 'react-icons/bi'
-import FavoriteButton from './FavoriteButton'
-import { useRouter } from 'next/router'
-import useInfoModal from '@/hooks/useInfoModal'
-import { MovieInterface } from '@/types'
+import React from 'react';
+import { BsFillPlayFill } from 'react-icons/bs';
+import { BiChevronDown } from 'react-icons/bi';
+import FavoriteButton from './FavoriteButton';
+import { useRouter } from 'next/router';
+import useInfoModal from '@/hooks/useInfoModal';
+import { MovieInterface } from '@/types';
 
 interface MovieCardProps {
-  data: MovieInterface
+  data: MovieInterface;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
-  const router = useRouter()
+  const router = useRouter();
 
-  const { openModal } = useInfoModal()
+  const { openModal } = useInfoModal();
 
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
@@ -141,7 +141,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MovieCard
+export default MovieCard;
