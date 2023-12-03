@@ -7,6 +7,9 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 
 import Input from '@/components/Input';
+import toast from 'react-hot-toast';
+
+type LoginType = 'google' | 'github' | 'credentials';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -36,18 +39,30 @@ const Auth = () => {
     setVariant((currentVariant) => (currentVariant === 'login' ? 'register' : 'login'));
   }, []);
 
-  const login = useCallback(async () => {
-    try {
-      await signIn('credentials', {
-        email,
-        password,
-        redirect: false,
-        callbackUrl: '/'
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, [email, password]);
+  const login = useCallback(
+    async (loginType: LoginType) => {
+      if (loginType === 'credentials') {
+        if (!email || !password) {
+          toast.error('Please fill email and password');
+          return;
+        }
+      }
+
+      toast.promise(
+        signIn(loginType, {
+          email,
+          password,
+          callbackUrl: '/profiles'
+        }),
+        {
+          success: 'Login success!',
+          error: 'Login failed!',
+          loading: 'Logging in'
+        }
+      );
+    },
+    [email, password]
+  );
 
   const register = useCallback(async () => {
     try {
@@ -56,7 +71,7 @@ const Auth = () => {
         name,
         password
       });
-      login();
+      login('credentials');
     } catch (error) {
       console.log(error);
     }
@@ -109,14 +124,14 @@ const Auth = () => {
               />
             </div>
             <button
-              onClick={variant === 'login' ? login : register}
+              onClick={variant === 'login' ? () => login('credentials') : register}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
               {variant === 'login' ? 'Login' : 'Sign up'}
             </button>
             <div className="flex flex-row justify-center items-center gap-4 mt-8">
               <div
-                onClick={() => signIn('google', { callbackUrl: '/profiles' })}
+                onClick={() => login('google')}
                 className="
                   w-10
                   h-10
@@ -133,7 +148,7 @@ const Auth = () => {
                 <FcGoogle size={30} />
               </div>
               <div
-                onClick={() => signIn('github', { callbackUrl: '/profiles' })}
+                onClick={() => login('github')}
                 className="
                   w-10
                   h-10
